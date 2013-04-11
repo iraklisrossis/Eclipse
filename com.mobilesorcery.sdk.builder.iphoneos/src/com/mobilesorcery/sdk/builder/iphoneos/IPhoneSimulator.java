@@ -12,6 +12,8 @@ import com.mobilesorcery.sdk.core.MoSyncTool;
 import com.mobilesorcery.sdk.core.Util;
 import com.mobilesorcery.sdk.core.Version;
 
+import com.mobilesorcery.sdk.core.XCodeSelect;
+
 public class IPhoneSimulator extends AbstractTool {
 
 	public synchronized static IPhoneSimulator createDefault() {

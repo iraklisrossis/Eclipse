@@ -30,6 +30,7 @@ import com.mobilesorcery.sdk.core.MoSyncTool;
 import com.mobilesorcery.sdk.core.ParameterResolver;
 import com.mobilesorcery.sdk.core.PropertyUtil;
 import com.mobilesorcery.sdk.core.Util;
+import com.mobilesorcery.sdk.core.XCodeSelect;
 import com.mobilesorcery.sdk.internal.builder.IncrementalBuilderVisitor;
 import com.mobilesorcery.sdk.internal.builder.MoSyncBuilderVisitor;
 
@@ -123,6 +124,9 @@ public class NativeLibBuildStep extends AbstractBuildStep {
 		}
 		commandLine.flag("--android-ndkbuild-cmd").with(new File(ndkLocation, "ndk-build"));
 		commandLine.flag("--android-version").with(Integer.toString(platformVersion));
+
+		// iOS specific stuff
+		commandLine.flag("--ios-xcode-location").with(XCodeSelect.getInstance().getCurrentXCodePath());
 		
 		DefaultPackager internal = new DefaultPackager(project, variant);
 		internal.runCommandLine(commandLine.asArray(),
